@@ -9,7 +9,7 @@ import pprint
 
 # создаём словарь-список того, что мы хотим получить
 params = {
-    'q':'html', # Поисковый запрос 'q' от слова query (ищем все репозитории c html)
+    'q':'language:html', # Поисковый запрос 'q' от слова query (ищем все репозитории c html)
 }
 # создаём переменную response в которой будем хранить ответ нашего запроса requests.get
 # params(Это сам атрибут функции GET)=params(после равно, это то наш словарь созданный ранее)
@@ -20,7 +20,7 @@ response_json = response.json() #
 pprint.pprint(response_json) # выводит ответ в виде словаря-списка
 print("  ")
 
-print("Ответ на основной запрос(Парсинг по ключу total_count)____________________________________________________:")
+print("Ответ на основной запрос (Парсинг по ключу language:html and total_count)____________________________________________________:")
 print(f"Количество репозиториев с использованием html: {response_json['total_count']}")
 
 print("  ")
@@ -32,3 +32,15 @@ else:
      print("Произошла ОШИБКА - ответ не успешный^^^")
 print("  ")
 print("ЗАПРОС ОКОНЧЕН!___________________________________________________________________________________________!")
+
+#Вариант НАСТАВНИКА
+# import requests
+#
+# url = "https://api.github.com/search/repositories"
+#
+# params = {"q": "language:html"}
+#
+# response = requests.get(url, params=params)
+#
+# print(f"Status code: {response.status_code}")
+# print(response.json())

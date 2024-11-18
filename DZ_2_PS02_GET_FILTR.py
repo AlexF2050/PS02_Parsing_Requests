@@ -17,6 +17,10 @@ params = {
 response = requests.get(url, params=params)
 
 # Распечатка полученных записей
-for post in response.json():
-    print(post)
+if response.status_code == 200:
+    posts = response.json()
+    for post in posts:
+        print(post)
+else:
+    print(f"Ошибка: {response.status_code}")
 
